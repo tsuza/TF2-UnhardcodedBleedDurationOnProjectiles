@@ -1,0 +1,90 @@
+"Games"
+{
+	"tf"
+	{
+		"Functions"
+		{
+            "CTFProjectile_Cleaver::OnHit()"
+            {
+                "signature"     "CTFProjectile_Cleaver::OnHit()"
+                "callconv"		"thiscall"
+				"this"			"entity"
+				"return"		"void"
+
+                "arguments"
+                {
+                    "pOther"
+                    {
+                        "type" "cbaseentity"
+                    }
+                }
+            }
+
+            "CTFBall_Ornament::ApplyBallImpactEffectOnVictim()"
+            {
+                "signature"     "CTFBall_Ornament::ApplyBallImpactEffectOnVictim()"
+                "callconv"		"thiscall"
+				"this"			"entity"
+				"return"		"void"
+
+                "arguments"
+                {
+                    "pOther"
+                    {
+                        "type" "cbaseentity"
+                    }
+                }
+            }
+        }
+        "MemPatches"
+        {
+			"CTFProjectile_Cleaver::OnHit()::MakeBleedDuration"
+			{
+				"signature"		"CTFProjectile_Cleaver::OnHit()"
+
+				"windows"
+				{
+					"offset"	"16Ch"
+                    "verify"	"\xD9\x05\x2A\x2A\x2A\x2A"
+                    "patch"     "\xD9\x05\x00\x00\x00\x00"
+				}
+
+				"linux"
+				{
+					"offset"	"126h"
+				}
+			}
+
+            "CTFBall_Ornament::ApplyBallImpactEffectOnVictim()::MakeBleedDuration"
+			{
+				"signature"		"CTFBall_Ornament::ApplyBallImpactEffectOnVictim()"
+
+				"windows"
+				{
+					"offset"	"C3h"
+                    "verify"	"\xD9\x05\x2A\x2A\x2A\x2A"
+                    "patch"     "\xD9\x05\x00\x00\x00\x00"
+				}
+
+				"linux"
+				{
+					"offset"	"1D5h"
+				}
+			}
+        }
+        "Signatures"
+        {
+            "CTFProjectile_Cleaver::OnHit()"
+            {
+                "windows"   "\x55\x8B\xEC\x81\xEC\x04\x01\x00\x00\x53\x57"
+                "linux"     "@_ZN21CTFProjectile_Cleaver5OnHitEP11CBaseEntity"
+            }
+
+            "CTFBall_Ornament::ApplyBallImpactEffectOnVictim()"
+            {
+                "windows"   "\x55\x8B\xEC\x81\xEC\x84\x00\x00\x00\x53\x57\x8B\x7D\x08\x8B\xD9\x85\xFF"
+                "linux"     "@_ZN16CTFBall_Ornament29ApplyBallImpactEffectOnVictimEP11CBaseEntity"
+            }
+        }
+    }
+}
