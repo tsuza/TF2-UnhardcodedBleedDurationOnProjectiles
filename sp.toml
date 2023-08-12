@@ -1,5 +1,7 @@
 [[dependency]]
 url = "https://github.com/nosoop/SMExt-SourceScramble/blob/7754d0d5cf1b601a1961636439ed6f87b36dde8e/scripting/include/sourcescramble.inc"
+path = "."
 
 [[dependency]]
 url = "https://github.com/FlaminSarge/tf2attributes/blob/3a9d780ee1eb6360348caa518ca39b29169440f4/scripting/include/tf2attributes.inc"
+path = "."
